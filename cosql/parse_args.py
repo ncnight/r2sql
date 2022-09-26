@@ -142,7 +142,7 @@ def interpret_args():
     parser.add_argument('--database_timeout', type=int, default=2)
 
     parser.add_argument('--use_transformer_relation', type=bool, default=True)
-    parser.add_argument('--table_schema_path', type=str, default="data/cosql_dataset/tables.json")
+    parser.add_argument('--table_schema_path', type=str, default="data/cosql/tables.json")
     ## relace it for colab
     # parser.add_argument('--table_schema_path', type=str, default="data/table.json")
 
