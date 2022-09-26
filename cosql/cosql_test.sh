@@ -1,11 +1,11 @@
 #! /bin/bash
 
-GLOVE_PATH="/dev/shm/glove_embeddings.pkl" # you need to change this
+GLOVE_PATH="glove_embeddings.pkl" # you need to change this
 LOGDIR="log/cosql"
 
 CUDA_VISIBLE_DEVICES=1 python3 run.py --raw_train_filename="data/cosql_data_removefrom/train.pkl" \
           --raw_validation_filename="data/cosql_data_removefrom/dev.pkl" \
-          --database_schema_filename="data/cosql_data_removefrom/tables.json" \
+          --database_schema_filename="data/cosql/tables.json" \
           --embedding_filename=$GLOVE_PATH \
           --data_directory="processed_data_cosql_removefrom" \
           --input_key="utterance" \
@@ -28,9 +28,10 @@ CUDA_VISIBLE_DEVICES=1 python3 run.py --raw_train_filename="data/cosql_data_remo
           --freeze=1 \
           --logdir=$LOGDIR \
           --evaluate=1 \
-          --evaluate_split="valid" \
+          --evaluate_split="train" \
           --use_predicted_queries=1 \
-          --save_file="$LOGDIR/save_14"
+          --save_file="$LOGDIR/save_14" \
+          --results_note="train_pretrained" 
 
 # 3. get evaluation result
 #python3 postprocess_eval.py --dataset=cosql --split=dev --pred_file $LOGDIR/valid_use_predicted_queries_predictions.json --remove_from
