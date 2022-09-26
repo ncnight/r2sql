@@ -570,7 +570,7 @@ def write_and_evaluate(postprocess_sqls, db_path, table_schema_path, gold_path, 
   
   print('begin command')
   return command
-
+import pickle as pkl
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
   parser.add_argument('--dataset', choices=('spider', 'sparc', 'cosql'), default='sparc')
@@ -599,7 +599,10 @@ if __name__ == '__main__':
   database_schema = read_schema(table_schema_path)
   predictions = read_prediction(pred_file)
   postprocess_sqls = postprocess(predictions, database_schema, args.remove_from)
-
+  print('right after post processing')
+  with open('to-eval.pkl', 'wb+') as fp:
+    pkl.dump(postprocess_sqls, fp)
+  print('dumped the postprocessed sql queries')
   command = write_and_evaluate(postprocess_sqls, db_path, table_schema_path, gold_path, args.dataset)
 
   print('command', command)
