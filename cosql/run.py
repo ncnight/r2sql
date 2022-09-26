@@ -186,7 +186,6 @@ def evaluate(model, data, params, last_save_file, split):
         params (namespace): Parameters for the model.
         last_save_file (str): Location where the model save file is.
     """
-    print(model.state_dict())
     if last_save_file:
         model.load(last_save_file)
     else:

@@ -39,7 +39,7 @@ class TransformerAttention(nn.Module):
         assert utterance_states.size()[1] == 350
         utterance_states = utterance_states[:,:300]
 
-        print('input_sequence', input_sequence)
+        # print('input_sequence', input_sequence)
         #print('input_schema.column_names_surface_form', input_schema.column_names_surface_form)
 
         if True:
