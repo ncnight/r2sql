@@ -363,7 +363,7 @@ def postprocess_one(pred_sql, schema):
 
 def postprocess(predictions, database_schema, remove_from=False):
   import math
-  use_reranker = True
+  use_reranker = False
   correct = 0
   total = 0
   postprocess_sqls = {}
