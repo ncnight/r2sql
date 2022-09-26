@@ -389,7 +389,10 @@ class ATISModel(torch.nn.Module):
         Inputs:
             filename (str): Name of file containing parameters.
         """
-        print(filename)
-        self.load_state_dict(torch.load(filename))
+        ignored_keys = ["transoformer_attention_module.token_wise_gate.0.weight", "transoformer_attention_module.token_wise_gate.0.bias", "transoformer_attention_module.token_wise_gate.2.weight", "transoformer_attention_module.token_wise_gate.2.bias"]
+        _state_dict_loaded = torch.load(filename)
+        for k in ignored_keys:
+            del _state_dict_loaded[k]
+        self.load_state_dict(_state_dict_loaded)
         print("Loaded model from file " + filename)
 
