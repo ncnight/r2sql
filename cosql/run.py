@@ -19,6 +19,8 @@ from model_util import Metrics, evaluate_utterance_sample, evaluate_interaction_
 import torch
 import time
 
+print('TORCH QUESTION', torch.cuda.is_available())
+
 VALID_EVAL_METRICS = [Metrics.LOSS, Metrics.TOKEN_ACCURACY, Metrics.STRING_ACCURACY]
 TRAIN_EVAL_METRICS = [Metrics.LOSS, Metrics.TOKEN_ACCURACY, Metrics.STRING_ACCURACY]
 FINAL_EVAL_METRICS = [Metrics.STRING_ACCURACY, Metrics.TOKEN_ACCURACY]
