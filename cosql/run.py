@@ -295,6 +295,7 @@ def main():
 
     model = model.cuda()
     model.build_optim()
+    print(model)
     sys.stdout.flush()
 
     last_save_file = ""

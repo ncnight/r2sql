@@ -389,6 +389,7 @@ class ATISModel(torch.nn.Module):
         Inputs:
             filename (str): Name of file containing parameters.
         """
+        print(filename)
         self.load_state_dict(torch.load(filename))
         print("Loaded model from file " + filename)
 
