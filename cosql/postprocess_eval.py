@@ -363,7 +363,7 @@ def postprocess_one(pred_sql, schema):
 
 def postprocess(predictions, database_schema, remove_from=False):
   import math
-  use_reranker = False
+  use_reranker = True
   correct = 0
   total = 0
   postprocess_sqls = {}
@@ -605,13 +605,13 @@ if __name__ == '__main__':
   print('dumped the postprocessed sql queries')
   command = write_and_evaluate(postprocess_sqls, db_path, table_schema_path, gold_path, args.dataset)
 
-  print('command', command)
+  # print('command', command)
 
-  eval_output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
-  if len( pred_file.split(',') ) > 1:
-    pred_file = 'ensemble'
-  else:
-    pred_file = pred_file.split(',')[0]
-  with open(pred_file+'.eval', 'w') as f:
-    f.write(eval_output.decode("utf-8"))
-  print('Eval result in', pred_file+'.eval')
+  # eval_output = subprocess.check_output(command, stderr=subprocess.STDOUT, shell=True)
+  # if len( pred_file.split(',') ) > 1:
+  #   pred_file = 'ensemble'
+  # else:
+  #   pred_file = pred_file.split(',')[0]
+  # with open(pred_file+'.eval', 'w') as f:
+  #   f.write(eval_output.decode("utf-8"))
+  # print('Eval result in', pred_file+'.eval')
